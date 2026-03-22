@@ -43,6 +43,14 @@ const projects = [
     gitlink:'https://github.com/mahadihasandev/smart-bank-frontend',
     tags: ['Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB'],
   },
+  {
+    title: 'FireChat',
+    description: 'A Realtime Chatting app made with firebase, Next.js, Tailwind CSS, ShadCn This project made with social media logic like friend request, friend list, group and Chatting',
+    image: '/assets/firechat.png',
+    link: 'https://fire-chat-orpin.vercel.app/',
+    gitlink:'https://github.com/mahadihasandev/FireChat',
+    tags: ['React', 'Node.js', 'Tailwind CSS','Redux','ShadCn','Firebase','Realtime Chatting','Google auth'],
+  },
 ];
 
 export function Projects() {
