@@ -3,7 +3,18 @@ import { SectionTitle } from './ui/SectionTitle';
 import { ProjectCard } from './ui/ProjectCard';
 import { motion } from 'framer-motion';
 
-const projects = [
+const mobileProjects = [
+  {
+    title: 'CloudSpace React Native App',
+    description: 'A modern mobile storage manager app built with React Native. Includes storage insights, usage cards, and clean mobile-first UI with smooth interactions.',
+    image: '/assets/react-native-cloudspace.png',
+    link: 'https://drive.google.com/file/d/1uodngEDF1Gn7Vul1rmRUoOSV4-paJ139/view?usp=sharing',
+    gitlink: 'https://github.com/mahadihasandev/expo-clude-strage',
+    tags: ['React Native', 'Expo', 'Mobile UI', 'TypeScript', 'APK'],
+  },
+];
+
+const webProjects = [
   {
     title: 'Serverless Full Stack e-commerce Next.js web-app',
     description: 'A production-oriented serverless e-commerce app with Next.js and TypeScript. Includes auth, Stripe checkout, global state management, and a Sanity CMS dashboard.',
@@ -60,18 +71,42 @@ export function Projects() {
       <div className="section-container">
         <SectionTitle>Projects</SectionTitle>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: index * 0.06, duration: 0.35 }}
-            >
-              <ProjectCard {...project} />
-            </motion.div>
-          ))}
+        <div className="max-w-6xl mx-auto space-y-12">
+         
+
+          <div>
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-5">Web Projects</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {webProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: index * 0.06, duration: 0.35 }}
+                >
+                  <ProjectCard {...project} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+           <div>
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-5">Android/IOS App</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {mobileProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: index * 0.06, duration: 0.35 }}
+                >
+                  <ProjectCard {...project} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
