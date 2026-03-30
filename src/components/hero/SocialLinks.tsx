@@ -16,7 +16,7 @@ const links = [
   {
     href: 'https://www.facebook.com/arnob38',
     icon: <FaFacebook className="w-6 h-6 text-[#25D366]" />,
-    label: 'WhatsApp',
+    label: 'Facebook',
   },
   {
     href: 'https://mybdjobs.bdjobs.com/jobseeker-panel/edit-profile?lang=en',
@@ -35,10 +35,10 @@ export function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="group relative p-3 bg-gray-200 dark:bg-gray-800 rounded-lg hover:scale-110 transform transition-transform duration-300"
+          className="group relative p-3 soft-card rounded-xl hover:scale-110 transform transition-transform duration-300"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-          <div>{icon}</div>
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-500/15 to-orange-400/15 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          <div className="relative">{icon}</div>
         </a>
       ))}
     </div>

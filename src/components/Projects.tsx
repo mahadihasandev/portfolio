@@ -1,11 +1,12 @@
 
 import { SectionTitle } from './ui/SectionTitle';
 import { ProjectCard } from './ui/ProjectCard';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
     title: 'Serverless Full Stack e-commerce Next.js web-app',
-    description: 'A Next.Js Typescript serverless E-commerce Webapp crafted with Shadcn/ui Tailwind. Authentication and session powered by Clark. payment integrated with stripe. Global State management by zastand Backend And Dashoard powered by Sanity cms GROQ quarry',
+    description: 'A production-oriented serverless e-commerce app with Next.js and TypeScript. Includes auth, Stripe checkout, global state management, and a Sanity CMS dashboard.',
     image: '/assets/shop-next.png',
     link: 'https://shop-nextjs-full-stack.vercel.app/',
     gitlink:'https://github.com/mahadihasandev/shop-nextjs-fullStack',
@@ -13,7 +14,7 @@ const projects = [
   },
   {
     title: 'Node.js Full-Stack multi-vendor Ecommerce:',
-    description: 'Next-Js frontend, Node.js Backend, React Dashboard crafted with Shadcn/ui tailwind & ant Design. I made an Independent Backend using express.js with MongoDB. Dashboard authentication protected with Jwt token decrypt encryption And Next Auth for user. A robust system with control over category subcategory, product upload variant and many more. ',
+    description: 'A multi-vendor commerce platform with Next.js frontend, Express.js API, MongoDB database, and admin dashboard for categories, products, and variants.',
     image: '/assets/node-frontend.png',
     link: 'https://next-frontend-express-project-saii.vercel.app/',
     gitlink:'https://github.com/mahadihasandev/next-frontend-express-project',
@@ -21,7 +22,7 @@ const projects = [
   },
   {
     title: 'Sanity Dashboard',
-    description: 'This is Snanity Dashbord for My Serverless Full Stack e-commerce Next.js web-app. It is a powerful and user-friendly content management system (CMS) that allows you to easily manage and organize your website content. With its intuitive interface and robust features, Sanity Dashboard provides a seamless experience for content creators and developers alike.',
+    description: 'A dedicated Sanity Studio workspace to manage catalog content, media, and structured commerce data for the serverless e-commerce platform.',
     image: '/assets/sanity.png',
     link: 'https://shop-nextjs-full-stack.vercel.app/studio',
     gitlink:'https://github.com/mahadihasandev/shop-nextjs-fullStack/tree/main/sanity',
@@ -29,7 +30,7 @@ const projects = [
   },
   {
     title: 'Dashboard for multi-vendor Ecommerce',
-    description: 'A React Dashboard crafted with tailwind & ant Design. I made an Independent Backend using express.js with MongoDB. Dashboard authentication protected with Jwt token decrypt encryption And Next Auth for user. A robust system with control over category subcategory, product upload variant and many more.',
+    description: 'A dashboard-focused React application with secure authentication, analytics-friendly UX, and robust admin controls for daily store operations.',
     image: '/assets/React-dashboard.png',
     link: 'https://e-commerce-dashboard-multivandor-zm.vercel.app/',
     gitlink:'https://github.com/mahadihasandev/eCommerce-Dashboard-multivandor',
@@ -37,7 +38,7 @@ const projects = [
   },
   {
     title: 'Smart-Banking',
-    description: 'A Smart Banking System built with Next.js, Tailwind CSS, Node.js, Express.js, and MongoDB. This project is a comprehensive banking application that allows users to take a lone and manage their finances efficiently. It features a user-friendly interface for account management, transaction history, and fund transfers. The backend is powered by Node.js and Express.js, while MongoDB is used for data storage.',
+    description: 'A banking platform prototype featuring account flows, transaction history, and fund transfer logic with a Next.js UI and Node.js backend.',
     image: '/assets/smart-bank.png',
     link: 'https://smart-bank-frontend.vercel.app/',
     gitlink:'https://github.com/mahadihasandev/smart-bank-frontend',
@@ -45,7 +46,7 @@ const projects = [
   },
   {
     title: 'FireChat',
-    description: 'A Realtime Chatting app made with firebase, Next.js, Tailwind CSS, ShadCn This project made with social media logic like friend request, friend list, group and Chatting',
+    description: 'A real-time chat platform with Firebase integrations, social graph features, friend requests, and group conversation support.',
     image: '/assets/firechat.png',
     link: 'https://fire-chat-orpin.vercel.app/',
     gitlink:'https://github.com/mahadihasandev/FireChat',
@@ -55,13 +56,21 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="container mx-auto px-8">
+    <section id="projects" className="section-shell">
+      <div className="section-container">
         <SectionTitle>Projects</SectionTitle>
-        
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: index * 0.06, duration: 0.35 }}
+            >
+              <ProjectCard {...project} />
+            </motion.div>
           ))}
         </div>
       </div>

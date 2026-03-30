@@ -35,30 +35,26 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5" />
+    <footer className="relative border-t border-blue-100/60 dark:border-slate-800">
+      <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-blue-500/5 to-orange-400/5" />
 
-      <div className="container mx-auto px-6 py-8 relative">
+      <div className="section-container py-10 relative">
         <div className="flex flex-col items-center gap-6">
-          {/* Navigation Links */}
           <nav className="flex flex-wrap gap-4 justify-center">
             {links.map(({ href, label }) => (
               <FooterLink key={href} href={href}>{label}</FooterLink>
             ))}
           </nav>
 
-          {/* Social Links */}
           <div className="scale-90">
             <SocialLinks />
           </div>
 
-          {/* Copyright */}
-          <div className="text-sm text-gray-500 dark:text-gray-400 text-center">
+          <div className="text-sm text-slate-500 dark:text-slate-400 text-center">
             <p>© {currentYear} Mahadi Hasan . All rights reserved.</p>
             <p className="flex items-center justify-center gap-2">
-              Built with <FaReact className="w-6 h-6 text-blue-500 animate-spin" /> using
-              <SiVite className="w-6 h-6 text-yellow-500 animate-pulse" />
+              Built with <FaReact className="w-5 h-5 text-blue-500" /> using
+              <SiVite className="w-5 h-5 text-yellow-500" />
             </p>
 
           </div>

@@ -11,8 +11,8 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20">
-      <div className="container mx-auto px-8">
+    <section id="experience" className="section-shell">
+      <div className="section-container">
         <SectionTitle>Experience</SectionTitle>
         <Timeline items={experiences} />
       </div>

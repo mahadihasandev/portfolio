@@ -4,7 +4,7 @@ import { Link } from './Link';
 import { useTheme } from '../hooks/useTheme';
 import { ThemeToggle } from './ui/ThemeToggle';
 import { useAnimatedLogo } from '../hooks/useAnimatedLogo';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 export function Navbar() {
@@ -52,56 +52,57 @@ export function Navbar() {
 
   return (
     <>
-      {/* <LoadingScreen isLoading={isLogoAnimating} /> */}
       <nav
-        className={`fixed top-2 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-6xl rounded-2xl
-                    ${isScrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md outline outline-1 outline-blue-600' : 'bg-transparent'}`}
+        className={`fixed top-3 left-1/2 z-50 w-[94%] max-w-6xl -translate-x-1/2 rounded-2xl border transition-all duration-300 ${
+          isScrolled
+            ? 'glass-panel border-blue-300/40 dark:border-blue-500/30'
+            : 'border-transparent bg-transparent'
+        }`}
       >
-        <div className="flex items-center justify-between h-12 px-4">
-          {/* Logo */}
-          <div className="cursor-pointer rounded-full" onClick={handleLogoClick}>
-            <img src="/assets/favicon.jpg" alt="Logo" className="h-10 w-10 rounded-full"  />
+        <div className="flex items-center justify-between h-14 px-4 sm:px-5">
+          <div className="cursor-pointer rounded-full group" onClick={handleLogoClick}>
+            <img
+              src="/assets/favicon.jpg"
+              alt="Logo"
+              className="h-10 w-10 rounded-full ring-2 ring-blue-500/30 transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-4 items-center justify-center relative gap-4">
+          <div className="hidden lg:flex space-x-2 items-center justify-center relative">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative text-base font-bold text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105"
+                className="relative px-3 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-300"
               >
                 {link.label}
                 {activeSection === link.href.substring(1) && (
                   <motion.div
                     layoutId="underline"
-                    className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 dark:bg-blue-400"
-                    transition={{ type: 'spring', stiffness: 500, damping: 20 }} // Faster animation
+                    className="absolute inset-x-2 -bottom-0.5 h-[2px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-orange-400"
+                    transition={{ type: 'spring', stiffness: 500, damping: 28 }}
                   />
                 )}
               </Link>
             ))}
-
-            
           </div>
 
-          <div className='hidden md:flex gap-3'>
-          <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+          <div className="hidden md:flex gap-3 items-center">
+            <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
             <Link
               href="#contact"
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700 hover:text-white dark:text-white dark:hover:text-white"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white text-sm hover:text-white shadow-lg shadow-blue-500/20"
             >
               Contact
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
-            </div>
+          </div>
 
-          {/* Mobile menu button */}
           <div className="flex lg:hidden items-center space-x-2">
             <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700"
+              className="p-2 rounded-xl bg-slate-200/80 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -109,15 +110,21 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="lg:hidden bg-white/95 dark:bg-gray-900/95 rounded-b-xl shadow-lg">
-            <div className="px-4 pt-2 pb-3 space-y-1">
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden mx-3 mb-3 rounded-xl border border-blue-200/60 dark:border-blue-900/40 bg-white/95 dark:bg-slate-950/95 shadow-xl"
+            >
+              <div className="px-3 pt-2 pb-3 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`block px-3 py-2 rounded-md text-sm text-center text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800`}
+                  className="block px-3 py-2 rounded-lg text-sm text-center text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-800"
                   onClick={() => {
                     setIsOpen(false);
                   }}
@@ -127,15 +134,16 @@ export function Navbar() {
               ))}
               <Link
                 href="#contact"
-                className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700 hover:text-white dark:text-white dark:hover:text-white"
+                className="mt-2 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 text-white text-sm hover:text-white"
                 onClick={() => setIsOpen(false)}
               >
                 Contact
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </>
   );

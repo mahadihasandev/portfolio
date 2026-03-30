@@ -1,7 +1,7 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import GitHubCalendar from "react-github-calendar";
 import { SectionTitle } from "./ui/SectionTitle";
-import { Github } from "lucide-react";
+import { Github, Star, GitFork } from "lucide-react";
 
 interface Repo {
     name: string;
@@ -25,17 +25,23 @@ interface UserProfile {
 export function GitHub() {
     const [repos, setRepos] = useState<Repo[]>([]);
     const [user, setUser] = useState<UserProfile | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch("https://api.github.com/users/mahadihasandev")
-            .then((response) => response.json())
-            .then((data: UserProfile) => setUser(data));
+        const loadGitHubData = async () => {
+            setIsLoading(true);
+            try {
+                const [userResponse, reposResponse] = await Promise.all([
+                    fetch("https://api.github.com/users/mahadihasandev"),
+                    fetch("https://api.github.com/users/mahadihasandev/repos?sort=pushed&direction=desc&per_page=6")
+                ]);
 
-        fetch("https://api.github.com/users/mahadihasandev/repos?sort=pushed&direction=desc&per_page=6")
-            .then((response) => response.json())
-            .then((data) =>
+                const userData: UserProfile = await userResponse.json();
+                const repoData = await reposResponse.json();
+
+                setUser(userData);
                 setRepos(
-                    data.map((repo: any) => ({
+                    repoData.map((repo: any) => ({
                         name: repo.name,
                         description: repo.description || "No description available",
                         stars: repo.stargazers_count,
@@ -43,23 +49,28 @@ export function GitHub() {
                         language: repo.language || "Unknown",
                         html_url: repo.html_url,
                     }))
-                )
-            );
+                );
+            } catch {
+                setRepos([]);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadGitHubData();
     }, []);
 
     return (
-        <section id="github" className="py-20">
-            <div className="container mx-auto max-w-6xl px-8">
+        <section id="github" className="section-shell">
+            <div className="section-container max-w-6xl">
                 <SectionTitle>GitHub Contributions</SectionTitle>
 
-                {/* Contribution Graph */}
                 <div className="mb-12 flex flex-col items-center">
-                    {/* Card-like container for the GitHub calendar */}
-                    <div className="w-full p-6 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg">
+                    <div className="w-full p-6 soft-card rounded-2xl">
                         <GitHubCalendar
                             username="mahadihasandev"
-                            blockSize={14.6}
-                            blockMargin={5}
+                            blockSize={17}
+                            blockMargin={10}
                             colorScheme="light"
                             theme={{
                                 light: ["#afb8c2", "#60a5fa", "#1a53e6", "#1c3dff", "#1c3dff"]
@@ -67,70 +78,67 @@ export function GitHub() {
                         />
                     </div>
 
-                    <p className="mt-8 text-lg text-center text-gray-600 dark:text-gray-300 max-w-5xl">
-                        My GitHub contributions reflect my consistent commitment to open-source development
-                        and personal projects. Explore my repositories to learn more about the projects I've worked on
-                        and the skills I bring to the table.
+                    <p className="mt-8 text-lg text-center text-slate-600 dark:text-slate-300 max-w-5xl">
+                        Consistent contribution history, open-source curiosity, and project experimentation are central
+                        to how I learn and improve as an engineer.
                     </p>
                 </div>
 
-                {/* Top Repositories */}
                 <div className="mx-auto max-w-6xl grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
-                    {repos.map((repo) => (
+                    {isLoading && Array.from({ length: 3 }).map((_, index) => (
+                        <div key={`loading-${index}`} className="soft-card h-48 animate-pulse" />
+                    ))}
+                    {!isLoading && repos.map((repo) => (
                         <a
                             key={repo.name}
                             href={repo.html_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block p-6 bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow hover:shadow-lg transition-transform duration-300 transform hover:scale-105"
+                            className="block p-6 soft-card rounded-2xl hover:shadow-lg transition-transform duration-300 transform hover:scale-[1.02]"
                         >
-                            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">
+                            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-300">
                                 {repo.name}
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-300 line-clamp-3">
+                            <p className="text-slate-600 dark:text-slate-300 line-clamp-3 text-sm mt-2">
                                 {repo.description}
                             </p>
-                            <div className="mt-4 flex items-center justify-between text-gray-500">
+                            <div className="mt-4 flex items-center justify-between text-slate-500 dark:text-slate-400 text-sm">
                                 <span>{repo.language}</span>
                                 <div className="flex space-x-4">
-                                    <span>⭐ {repo.stars}</span>
-                                    <span>🍴 {repo.forks}</span>
+                                    <span className="flex items-center gap-1"><Star className="w-4 h-4" /> {repo.stars}</span>
+                                    <span className="flex items-center gap-1"><GitFork className="w-4 h-4" /> {repo.forks}</span>
                                 </div>
                             </div>
                         </a>
                     ))}
                 </div>
 
-                {/* GitHub Profile Widget */}
                 {user && (
-                    <div className="flex flex-col md:flex-row items-center justify-between bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg p-6 shadow-lg">
-                        {/* Avatar & Name */}
+                    <div className="flex flex-col md:flex-row items-center justify-between soft-card rounded-2xl p-6 gap-5">
                         <div className="flex items-center space-x-4">
                             <img
                                 src={user.avatar_url}
                                 alt="GitHub Avatar"
-                                className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-blue-600"
+                                className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-blue-500/70"
                             />
                             <div>
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{user.name}</h3>
-                                <p className="text-gray-600 dark:text-gray-400">@{user.login}</p>
+                                <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{user.name}</h3>
+                                <p className="text-slate-600 dark:text-slate-400">@{user.login}</p>
                             </div>
                         </div>
 
-                        {/* Bio & Stats */}
-                        <p className="hidden md:block text-gray-700 dark:text-gray-300 flex-1 text-center md:text-left mx-6">
+                        <p className="hidden md:block text-slate-700 dark:text-slate-300 flex-1 text-center md:text-left mx-6">
                             {user.bio}
                         </p>
 
-                        {/* Followers, Repos, Profile Link */}
-                        <div className="flex flex-wrap items-center justify-center md:justify-start space-x-4 md:space-x-6 text-gray-600 dark:text-gray-400 mt-4 md:mt-0">
+                        <div className="flex flex-wrap items-center justify-center md:justify-start space-x-4 md:space-x-6 text-slate-600 dark:text-slate-400 mt-4 md:mt-0">
                             <span className="flex items-center gap-1 text-sm">👥 {user.followers} Followers</span>
                             <span className="flex items-center gap-1 text-sm">📦 {user.public_repos} Repos</span>
                             <a
                                 href={user.html_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full md:w-auto text-center flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 hover:scale-105 transition-all mt-3 md:mt-0"
+                                className="w-full md:w-auto text-center flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-4 py-2 rounded-lg hover:scale-105 transition-all mt-3 md:mt-0"
                             >
                                 <Github className="w-5 h-5" /> View Profile
                             </a>

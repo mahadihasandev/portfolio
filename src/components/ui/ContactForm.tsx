@@ -51,7 +51,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-2">
+        <label htmlFor="name" className="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200">
           Name
         </label>
         <input
@@ -62,12 +62,12 @@ export function ContactForm() {
           onChange={handleChange}
           required
           placeholder="Enter your name"
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="w-full px-4 py-3 rounded-xl border border-blue-100 dark:border-slate-700 bg-white/90 dark:bg-slate-900/80 placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500/70 focus:outline-none"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-2">
+        <label htmlFor="email" className="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200">
           Email
         </label>
         <input
@@ -78,12 +78,12 @@ export function ContactForm() {
           onChange={handleChange}
           required
           placeholder="Enter your email"
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="w-full px-4 py-3 rounded-xl border border-blue-100 dark:border-slate-700 bg-white/90 dark:bg-slate-900/80 placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500/70 focus:outline-none"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
+        <label htmlFor="message" className="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200">
           Message
         </label>
         <textarea
@@ -94,17 +94,17 @@ export function ContactForm() {
           required
           placeholder="Enter your message"
           rows={4}
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="w-full px-4 py-3 rounded-xl border border-blue-100 dark:border-slate-700 bg-white/90 dark:bg-slate-900/80 placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500/70 focus:outline-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className={`w-full py-3 px-6 rounded-lg flex items-center justify-center gap-2 ${
+        className={`w-full py-3 px-6 rounded-xl flex items-center justify-center gap-2 font-semibold transition-all ${
           status === 'submitting'
-            ? 'bg-blue-400'
-            : 'bg-blue-600 hover:bg-blue-700 text-white'
+            ? 'bg-blue-400 text-white'
+            : 'bg-gradient-to-r from-sky-500 to-blue-600 hover:scale-[1.01] text-white shadow-lg shadow-blue-500/20'
         }`}
       >
         {status === 'submitting' ? 'Sending...' : 'Send Message'}

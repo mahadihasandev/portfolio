@@ -34,22 +34,43 @@ const skills = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-8">
+    <section id="skills" className="section-shell">
+      <div className="section-container">
         <SectionTitle>Skills</SectionTitle>
-        <div className="max-w-6xl mx-auto space-y-12">
-          {/* skills */}
-          <div>
-            <div className="flex flex-wrap gap-6 justify-center">
-              {skills.map((tech) => (
-                <div
-                  key={tech.name}
-                  className="flex flex-col items-center p-2 sm:p-4 sm:border border-gray-300 dark:border-gray-600 rounded-lg shadow-md hover:shadow-xl hover:bg-gray-200 dark:hover:bg-gray-800 transition-transform duration-300 transform hover:scale-110 cursor-pointer"
-                >
-                  <tech.icon size={40} color={tech.color} />
-                  <span className="text-sm font-medium text-gray-800 dark:text-gray-200 mt-2">{tech.name}</span>
-                </div>
-              ))}
+
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5">
+            {skills.map((tech) => (
+              <div
+                key={tech.name}
+                className="soft-card flex flex-col items-center justify-center p-4 min-h-28 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <tech.icon size={34} color={tech.color} />
+                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mt-2 text-center">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 grid md:grid-cols-3 gap-4">
+            <div className="soft-card p-5">
+              <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">Frontend</h3>
+              <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm">
+                Responsive UI engineering with React, Next.js, TypeScript, and modern utility-first design systems.
+              </p>
+            </div>
+            <div className="soft-card p-5">
+              <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">Backend</h3>
+              <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm">
+                API development, authentication flows, and reliable data architecture using Node.js, Express, and MongoDB.
+              </p>
+            </div>
+            <div className="soft-card p-5">
+              <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">Product Mindset</h3>
+              <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm">
+                Focused on performance, maintainability, and business impact from idea to deployment.
+              </p>
             </div>
           </div>
         </div>
