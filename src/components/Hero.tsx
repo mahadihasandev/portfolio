@@ -19,7 +19,7 @@ export function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-blue-50/80 to-orange-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.4] dark:opacity-[0.3] mix-blend-multiply dark:mix-blend-screen" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.46] dark:opacity-[0.36] mix-blend-multiply dark:mix-blend-screen" />
 
       <div className="section-container py-12 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
