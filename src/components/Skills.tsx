@@ -12,6 +12,7 @@ const skills = [
   { name: 'JavaScript', icon: SiJavascript, color: '#f7df1e' },
   { name: 'TypeScript', icon: SiTypescript, color: '#3178c6' },
   { name: 'React', icon: FaReact, color: '#61dafb' },
+  { name: 'React Native', icon: FaReact, color: '#61dafb' },
   { name: 'Redux', icon: SiRedux, color: '#764abc' },
   { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
   { name: 'Vite', icon: SiVite, color: '#646cff' },
