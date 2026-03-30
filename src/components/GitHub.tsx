@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import GitHubCalendar from "react-github-calendar";
 import { SectionTitle } from "./ui/SectionTitle";
 import { Github, Star, GitFork } from "lucide-react";
@@ -22,12 +22,44 @@ interface UserProfile {
     html_url: string;
 }
 
+interface GitHubRepoApi {
+    name: string;
+    description: string | null;
+    stargazers_count: number;
+    forks: number;
+    language: string | null;
+    html_url: string;
+}
+
 export function GitHub() {
     const [repos, setRepos] = useState<Repo[]>([]);
     const [user, setUser] = useState<UserProfile | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [shouldLoad, setShouldLoad] = useState(false);
+    const sectionRef = useRef<HTMLElement | null>(null);
 
     useEffect(() => {
+        const node = sectionRef.current;
+        if (!node) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const entry = entries[0];
+                if (entry.isIntersecting) {
+                    setShouldLoad(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: "300px 0px" }
+        );
+
+        observer.observe(node);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!shouldLoad) return;
+
         const loadGitHubData = async () => {
             setIsLoading(true);
             try {
@@ -37,11 +69,11 @@ export function GitHub() {
                 ]);
 
                 const userData: UserProfile = await userResponse.json();
-                const repoData = await reposResponse.json();
+                const repoData: GitHubRepoApi[] = await reposResponse.json();
 
                 setUser(userData);
                 setRepos(
-                    repoData.map((repo: any) => ({
+                    repoData.map((repo) => ({
                         name: repo.name,
                         description: repo.description || "No description available",
                         stars: repo.stargazers_count,
@@ -58,24 +90,28 @@ export function GitHub() {
         };
 
         loadGitHubData();
-    }, []);
+    }, [shouldLoad]);
 
     return (
-        <section id="github" className="section-shell">
+        <section ref={sectionRef} id="github" className="section-shell">
             <div className="section-container max-w-6xl">
                 <SectionTitle>GitHub Contributions</SectionTitle>
 
                 <div className="mb-12 flex flex-col items-center">
                     <div className="w-full p-6 soft-card rounded-2xl">
-                        <GitHubCalendar
-                            username="mahadihasandev"
-                            blockSize={17}
-                            blockMargin={10}
-                            colorScheme="light"
-                            theme={{
-                                light: ["#afb8c2", "#60a5fa", "#1a53e6", "#1c3dff", "#1c3dff"]
-                            }}
-                        />
+                        {shouldLoad ? (
+                            <GitHubCalendar
+                                username="mahadihasandev"
+                                blockSize={17}
+                                blockMargin={10}
+                                colorScheme="light"
+                                theme={{
+                                    light: ["#afb8c2", "#60a5fa", "#1a53e6", "#1c3dff", "#1c3dff"]
+                                }}
+                            />
+                        ) : (
+                            <div className="h-[152px] animate-pulse rounded-xl bg-slate-200/60 dark:bg-slate-800/60" />
+                        )}
                     </div>
 
                     <p className="mt-8 text-lg text-center text-slate-600 dark:text-slate-300 max-w-5xl">

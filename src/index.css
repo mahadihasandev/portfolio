@@ -161,13 +161,24 @@ html, body {
 }
 
 /* Optimize images and transitions */
-img {
-  @apply transform-gpu;
-}
+@media (max-width: 767px) {
+  .bg-grid-pattern {
+    background-size: 34px 34px;
+  }
 
-.transition-transform,
-.transition-all {
-  @apply transform-gpu;
+  .glass-panel {
+    backdrop-filter: blur(8px);
+  }
+
+  .section-shell {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
+
+  .animate-wave,
+  .animate-bounce {
+    animation-duration: 3.5s;
+  }
 }
 
 /* Simple scrollbar polish for desktop browsers */

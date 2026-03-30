@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Link } from './Link';
 import { TypeWriter } from './ui/TypeWriter';
@@ -19,7 +18,7 @@ export function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-blue-50/80 to-orange-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.46] dark:opacity-[0.36] mix-blend-multiply dark:mix-blend-screen" />
+      <div className="hidden sm:block absolute inset-0 bg-grid-pattern opacity-[0.46] dark:opacity-[0.36] mix-blend-multiply dark:mix-blend-screen" />
 
       <div className="section-container py-12 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -60,13 +59,15 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="relative order-1 md:order-2"
           >
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-sky-400/25 via-blue-500/20 to-orange-300/25 blur-2xl" />
+            <div className="hidden sm:block absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-sky-400/25 via-blue-500/20 to-orange-300/25 blur-2xl" />
             <div className="soft-card p-3 sm:p-4 rounded-[2rem] relative">
               <img
                 src="/assets/favicon.jpg"
                 alt="Mahadi Hasan"
                 className="relative w-full max-w-[420px] h-auto mx-auto rounded-[1.6rem] object-cover shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
-                loading="lazy"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
           </motion.div>

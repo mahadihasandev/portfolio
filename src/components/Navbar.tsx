@@ -15,8 +15,21 @@ export function Navbar() {
   const { handleLogoClick } = useAnimatedLogo();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        const nextIsScrolled = window.scrollY > 20;
+        setIsScrolled((prev) => (prev === nextIsScrolled ? prev : nextIsScrolled));
+        ticking = false;
+      });
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

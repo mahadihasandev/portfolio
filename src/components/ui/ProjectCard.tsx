@@ -21,6 +21,8 @@ export function ProjectCard({ title, description, image, link, gitlink, tags }: 
             src={image}
             alt={title}
             className="w-full h-52 object-cover transform transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-slate-950/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
             <a
