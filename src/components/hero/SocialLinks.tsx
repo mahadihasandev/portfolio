@@ -9,7 +9,7 @@ const links = [
     label: 'GitHub',
   },
   {
-    href: 'https://www.linkedin.com/in/mayhaydi-hasan-b02476259//',
+    href: 'https://www.linkedin.com/in/mayhaydi-hasan-b02476259/',
     icon: <Linkedin className="w-6 h-6 text-[#0077B5]" />,
     label: 'LinkedIn',
   },
