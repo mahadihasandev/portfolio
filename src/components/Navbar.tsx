@@ -77,7 +77,7 @@ export function Navbar() {
             <img
               src="/assets/favicon.jpg"
               alt="Logo"
-              className="h-10 w-10 rounded-full ring-2 ring-blue-500/30 transition-transform duration-300 group-hover:scale-105"
+              className="h-11 w-11 rounded-full ring-2 ring-blue-500/30 transition-transform duration-300 group-hover:scale-105"
             />
           </div>
 
