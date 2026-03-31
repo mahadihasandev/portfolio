@@ -36,7 +36,7 @@ export function Hero() {
                 Mahadi Hasan
               </h1>
               <div className="text-lg md:text-2xl text-slate-600 dark:text-slate-300">
-                I build as a <TypeWriter words={roles} delay={90} />
+                I am a <TypeWriter words={roles} delay={90} />
               </div>
             </div>
 
