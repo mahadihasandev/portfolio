@@ -41,7 +41,7 @@ export function Hero() {
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-start gap-3">
-              {['4+ Years Learning', '20+ Projects', 'Open To Work'].map((item) => (
+              {['2+ Years of Experience', '20+ Projects', 'Open To Work'].map((item) => (
                 <span key={item} className="soft-card px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
                   {item}
                 </span>
