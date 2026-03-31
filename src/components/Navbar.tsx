@@ -57,10 +57,10 @@ export function Navbar() {
 
   const navLinks = [
     { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
     { href: '#github', label: 'GitHub' },
+    { href: '#about', label: 'About' },
     { href: '#experience', label: 'Experience' },
     { href: '#education', label: 'Education' },
   ];

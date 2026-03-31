@@ -89,7 +89,7 @@
   }
 
   .section-shell {
-    @apply py-20 md:py-24;
+    @apply py-10 md:py-12;
   }
 
   .section-container {
