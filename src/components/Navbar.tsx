@@ -5,6 +5,8 @@ import { useTheme } from '../hooks/useTheme';
 import { ThemeToggle } from './ui/ThemeToggle';
 import { useAnimatedLogo } from '../hooks/useAnimatedLogo';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Logo } from './Logo';
+
 
 
 export function Navbar() {
@@ -74,11 +76,11 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between h-14 px-4 sm:px-5">
           <div className="cursor-pointer rounded-full group" onClick={handleLogoClick}>
-            <img
-              src="/assets/favicon.jpg"
-              alt="Logo"
-              className="h-11 w-11 rounded-full ring-2 ring-blue-500/30 transition-transform duration-300 group-hover:scale-105"
-            />
+           <Link href="#home" className="flex items-center">
+            <Logo size="md" variant="full" />
+
+          </Link>
+
           </div>
 
           <div className="hidden lg:flex space-x-2 items-center justify-center relative">
