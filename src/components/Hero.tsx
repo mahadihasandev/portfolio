@@ -8,11 +8,11 @@ import { motion } from 'framer-motion';
 
 export function Hero() {
   const roles = [
-    "Full-Stack Developer",
-    "Problem Solver",
-    "Content Creator",
-    "Lifelong Learner",
-    "Security Enthusiast",
+    "Full-Stack Developer  ",
+    "Problem Solver  ",
+    "Content Creator  ",
+    "Lifelong Learner  ",
+    "Security Enthusiast  ",
   ];
 
   return (
