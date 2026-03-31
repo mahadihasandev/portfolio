@@ -22,10 +22,10 @@ function App() {
           <div className="hidden md:block absolute left-[42%] bottom-[8%] h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
         </div>
         <Navbar />
-        <Hero />
-        <About />
+        <Hero />        
         <Skills />
         <Projects />
+        <About />
         <GitHub />
         <Experience />
         <Education />
