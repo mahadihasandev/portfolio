@@ -16,7 +16,7 @@ export function Hero() {
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-14">
       <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-blue-50/80 to-orange-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
       <div className="hidden sm:block absolute inset-0 bg-grid-pattern opacity-[0.46] dark:opacity-[0.36] mix-blend-multiply dark:mix-blend-screen" />
 
@@ -73,12 +73,12 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
           <Link
-            href="#about"
-            className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+            href="#skills"
+            className="flex items-center gap-2 border border-blue-400 rounded-full text-sm font-medium text-slate-600 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
           >
-            <ArrowDown className="w-6 h-6 text-slate-600 dark:text-slate-200" />
+            <ArrowDown className="w-6 h-6  text-slate-600 dark:text-slate-200" />
           </Link>
         </div>
       </div>

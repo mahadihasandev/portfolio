@@ -11,29 +11,10 @@ import { Logo } from './Logo';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const { isDark, setIsDark } = useTheme();
   const { handleLogoClick } = useAnimatedLogo();
 
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (ticking) return;
-      ticking = true;
-
-      requestAnimationFrame(() => {
-        const nextIsScrolled = window.scrollY > 20;
-        setIsScrolled((prev) => (prev === nextIsScrolled ? prev : nextIsScrolled));
-        ticking = false;
-      });
-    };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     const sections = document.querySelectorAll('section');
@@ -68,11 +49,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-3 left-1/2 z-50 w-[94%] max-w-6xl -translate-x-1/2 rounded-2xl border transition-all duration-300 ${
-          isScrolled
-            ? 'glass-panel border-blue-300/40 dark:border-blue-500/30'
-            : 'border-transparent bg-transparent'
-        }`}
+        className={`fixed top-3 left-1/2 z-50 w-[94%] max-w-6xl -translate-x-1/2 rounded-2xl transition-all duration-300 glass-panel border-blue-300/40 dark:border-blue-500/30'`}
       >
         <div className="flex items-center justify-between h-14 px-4 sm:px-5">
           <div className="cursor-pointer rounded-full group" onClick={handleLogoClick}>
