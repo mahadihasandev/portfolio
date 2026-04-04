@@ -49,7 +49,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-3 left-1/2 z-50 w-[94%] max-w-6xl -translate-x-1/2 rounded-2xl transition-all duration-300 glass-panel border-blue-300/40 dark:border-blue-500/30'`}
+        className={`fixed top-3 py-1 left-1/2 z-50 w-[94%] max-w-6xl -translate-x-1/2 rounded-2xl transition-all duration-300 glass-panel border-blue-300/40 dark:border-blue-500/30'`}
       >
         <div className="flex items-center justify-between h-14 px-4 sm:px-5">
           <div className="cursor-pointer rounded-full group" onClick={handleLogoClick}>
@@ -65,7 +65,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative px-3 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-300"
+                className="relative px-3 py-0.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-300"
               >
                 {link.label}
                 {activeSection === link.href.substring(1) && (

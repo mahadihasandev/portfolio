@@ -29,7 +29,7 @@ export function Hero() {
             className="flex flex-col items-center md:items-start text-center md:text-left space-y-5 order-2 md:order-1"
           >
             <div className="space-y-3">
-              <div className="inline-block soft-card text-blue-700 dark:text-blue-300 text-sm font-semibold px-4 py-2 rounded-full">
+              <div className="inline-block border dark:border-slate-600 bg-white shadow-xl dark:bg-slate-800 text-blue-700 dark:text-blue-300 text-sm font-semibold px-4 py-2 rounded-full">
                 Hey! <span className="inline-block origin-[70%_70%] animate-wave">👋</span> I am
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold gradient-text">
@@ -42,7 +42,7 @@ export function Hero() {
 
             <div className="flex flex-wrap justify-center md:justify-start gap-3">
               {['2+ Years of Experience', '20+ Projects', 'Open To Work'].map((item) => (
-                <span key={item} className="soft-card px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                <span key={item} className="border dark:border-slate-600 bg-white shadow-xl dark:bg-slate-900 text-slate-700 dark:text-slate-200 text-sm font-semibold px-4 py-2 rounded-full">
                   {item}
                 </span>
               ))}
@@ -60,11 +60,11 @@ export function Hero() {
             className="relative order-1 md:order-2"
           >
             <div className="hidden sm:block absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-sky-400/25 via-blue-500/20 to-orange-300/25 blur-2xl" />
-            <div className="soft-card p-3 sm:p-4 rounded-[2rem] relative">
+            <div className="sm:p-4 rounded-[2rem] relative">
               <img
                 src="/assets/favicon.jpg"
                 alt="Mahadi Hasan"
-                className="relative w-full max-w-[420px] h-auto mx-auto rounded-[1.6rem] object-cover shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                className="relative w-full hover:shadow-xl hover:shadow-blue-500/50 max-w-[420px] h-auto mx-auto rounded-[1.6rem] object-cover shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"

@@ -44,7 +44,7 @@ export function Skills() {
             {skills.map((tech) => (
               <div
                 key={tech.name}
-                className="soft-card flex flex-col items-center justify-center p-4 min-h-28 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="border shadow-xl rounded-xl bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-800 flex flex-col items-center justify-center p-4 min-h-28 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <tech.icon size={34} color={tech.color} />
                 <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mt-2 text-center">
@@ -55,19 +55,19 @@ export function Skills() {
           </div>
 
           <div className="mt-10 grid md:grid-cols-3 gap-4">
-            <div className="soft-card p-5">
+            <div className="shadow-xl rounded-xl bg-white dark:bg-slate-900 border  border-gray-200 dark:border-slate-800 p-5">
               <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">Frontend</h3>
               <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm">
                 Responsive UI engineering with React, Next.js, TypeScript, and modern utility-first design systems.
               </p>
             </div>
-            <div className="soft-card p-5">
+            <div className="shadow-xl rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-5">
               <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">Backend</h3>
               <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm">
                 API development, authentication flows, and reliable data architecture using Node.js, Express, and MongoDB.
               </p>
             </div>
-            <div className="soft-card p-5">
+            <div className="shadow-xl rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-5">
               <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">Product Mindset</h3>
               <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm">
                 Focused on performance, maintainability, and business impact from idea to deployment.

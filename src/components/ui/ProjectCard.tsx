@@ -44,7 +44,7 @@ export function ProjectCard({ title, description, image, link, gitlink, tags }: 
           </div>
         </div>
 
-        <div className="p-6">
+        <div className="p-5">
           <h3 className="text-lg font-bold mb-2 text-slate-800 dark:text-white leading-snug">{title}</h3>
           <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm leading-relaxed">{description}</p>
           <div className="flex flex-wrap gap-2">

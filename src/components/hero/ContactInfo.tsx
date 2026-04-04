@@ -24,7 +24,7 @@ function ContactItem({ icon, text, href }: ContactItemProps) {
 
 export function ContactInfo() {
   return (
-    <div className="flex flex-col items-center md:items-start gap-1 soft-card px-2 py-2">
+    <div className="flex flex-col items-center md:items-start gap-1 border dark:border-slate-600 bg-white shadow-xl dark:bg-slate-900 rounded-2xl px-2 py-2">
       <ContactItem
         icon={<Phone className="w-5 h-5" />}
         text="+880 01735696417"
