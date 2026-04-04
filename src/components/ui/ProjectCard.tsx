@@ -15,12 +15,12 @@ export function ProjectCard({ title, description, image, link, gitlink, tags }: 
     <div className="relative group">
       <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 via-blue-500/20 to-orange-300/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity" />
 
-      <div className="relative soft-card rounded-2xl overflow-hidden group hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
+      <div className="relative border border-slate-300 bg-white dark:bg-slate-900 dark:border-slate-600 shadow-xl rounded-2xl overflow-hidden group hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
         <div className="relative overflow-hidden">
           <img
             src={image}
             alt={title}
-            className="w-full h-52 object-cover transform transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-56 object-cover transform transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
             decoding="async"
           />

@@ -138,7 +138,7 @@ export function GitHub() {
                 <SectionTitle>GitHub Contributions</SectionTitle>
 
                 <div className="mb-12 flex flex-col items-center">
-                    <div className="w-auto p-6 soft-card rounded-2xl">
+                    <div className="w-full md:w-auto p-6 soft-card rounded-2xl">
                         <GitHubCalendar
                             username="mahadihasandev"
                             blockSize={13}
