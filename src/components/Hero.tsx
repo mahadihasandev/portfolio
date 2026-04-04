@@ -29,7 +29,7 @@ export function Hero() {
             className="flex flex-col items-center md:items-start text-center md:text-left space-y-5 order-2 md:order-1"
           >
             <div className="space-y-3">
-              <div className="inline-block border dark:border-slate-600 bg-white shadow-xl dark:bg-slate-800 text-blue-700 dark:text-blue-300 text-sm font-semibold px-4 py-2 rounded-full">
+              <div className="inline-block border dark:border-slate-600 bg-white shadow-xl dark:bg-slate-900 text-blue-700 dark:text-blue-300 text-sm font-semibold px-4 py-2 rounded-full">
                 Hey! <span className="inline-block origin-[70%_70%] animate-wave">👋</span> I am
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold gradient-text">
