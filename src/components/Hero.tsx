@@ -60,16 +60,14 @@ export function Hero() {
             className="relative order-1 md:order-2"
           >
             <div className="hidden sm:block absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-sky-400/25 via-blue-500/20 to-orange-300/25 blur-2xl" />
-            <div className="soft-card p-3 sm:p-4 rounded-[2rem] relative">
-              <img
-                src="/assets/favicon.jpg"
-                alt="Mahadi Hasan"
-                className="relative w-full max-w-[420px] h-auto mx-auto rounded-[1.6rem] object-cover shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-              />
-            </div>
+            <img
+              src="/assets/favicon.jpg"
+              alt="Mahadi Hasan"
+              className="relative w-full max-w-[420px] hover:shadow-xl hover:shadow-sky-500 h-auto mx-auto rounded-[1.6rem] object-cover shadow-2xl ease-in-out transition-all duration-300 hover:scale-[1.02]"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
           </motion.div>
         </div>
 
