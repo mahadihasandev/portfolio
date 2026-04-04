@@ -21,7 +21,7 @@ export function Hero() {
       <div className="hidden sm:block absolute inset-0 bg-grid-pattern opacity-[0.46] dark:opacity-[0.36] mix-blend-multiply dark:mix-blend-screen" />
 
       <div className="section-container py-12 relative z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
